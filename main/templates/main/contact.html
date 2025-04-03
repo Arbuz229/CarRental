@@ -1,0 +1,48 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Контакты</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Главная</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="contact">
+        <h2>Свяжитесь с нами</h2>
+        <p>Вы можете связаться с нами по следующим контактам:</p>
+        <ul>
+            <li><strong>Телефон:</strong> +7 (123) 456-78-90</li>
+            <li><strong>Email:</strong> info@rentalstore.com</li>
+            <li><strong>Адрес:</strong> ул. Примерная, д. 10, Москва</li>
+        </ul>
+        <form action="/send-message" method="POST">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Сообщение:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Отправить</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Магазин аренды. Все права защищены.</p>
+    </footer>
+</body>
+</html>

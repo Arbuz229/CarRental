@@ -1,0 +1,42 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог товаров</title>
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Каталог товаров</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Главная</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="catalog">
+        <h2>Каталог товаров</h2>
+        <div class="product-list">
+            <div class="product">
+                <h3>Товар 1</h3>
+                <p>Описание товара</p>
+                <button>Арендовать</button>
+            </div>
+            <div class="product">
+                <h3>Товар 2</h3>
+                <p>Описание товара</p>
+                <button>Арендовать</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Магазин аренды. Все права защищены.</p>
+    </footer>
+</body>
+</html>
