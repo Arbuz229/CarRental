@@ -10,12 +10,12 @@
 </head>
 <body>
     <header>
-        <h1>Магазин аренды</h1>
+        <h1>{{ tittle }}</h1>
         <nav>
             <ul>
-                <li><a href="catalog">Каталог</a></li>
-                <li><a href="about">О нас</a></li>
-                <li><a href="contact">Контакты</a></li>
+                <li><a href="{% url 'catalog' %} ">Каталог</a></li>
+                <li><a href="{% url 'about' %}">О нас</a></li>
+                <li><a href="{% url 'contact' %}">Контакты</a></li>
             </ul>
         </nav>
     </header>
@@ -23,6 +23,9 @@
     <section id="home">
         <h2>Добро пожаловать в наш магазин аренды</h2>
         <p>Арендуйте лучшие товары по доступным ценам.</p>
+        {% for el in values %}
+            <p>{{ el }}</p>
+        {% endfor %}
     </section>
     
 
