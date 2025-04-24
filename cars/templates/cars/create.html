@@ -1,0 +1,134 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создать объявление</title>
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            margin-bottom: 10px;
+        }
+
+        .auth-message {
+            text-align: center;
+            margin-top: 30px;
+            padding: 30px;
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-radius: 10px;
+        }
+
+        .auth-message a {
+            margin: 0 10px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+        }
+
+        .auth-message a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Создать объявление</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Главная</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            {% if user.is_authenticated %}
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="{{ form.name.id_for_label }}">Название автомобиля</label>
+                        {{ form.name }}
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        {{ form.is_available }}
+                        <label for="{{ form.is_available.id_for_label }}">Автомобиль доступен</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.photo.id_for_label }}">Фото автомобиля</label>
+                        {{ form.photo }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.phone_number.id_for_label }}">Номер для связи</label>
+                        {{ form.phone_number }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.description.id_for_label }}">Дополнительная информация</label>
+                        {{ form.description }}
+                    </div>
+
+                    {% if error %}
+                        <p class="error-message">{{ error }}</p>
+                    {% endif %}
+
+                    <button type="submit" class="submit-btn">Создать объявление</button>
+                </form>
+            {% else %}
+                <div class="auth-message">
+                    <p>Вы не вошли в аккаунт. Чтобы создать объявление, вам необходимо быть в аккаунте</p>
+                    <div style="margin-top: 15px;">
+                        <a href="{% url 'login' %}" class="auth-btn">Войти</a>
+                        <a href="{% url 'register' %}" class="auth-btn">Зарегистрироваться</a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Прокат+. Все права защищены.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,102 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мои объявления</title>
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <style>
+        .car-list {
+            max-height: 500px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .car-list li {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .edit-btn {
+            display: inline-block;
+            margin-top: 8px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .edit-btn:hover {
+            background-color: #45a049;
+        }
+
+        .back-link {
+            margin-top: 10px;
+            display: inline-block;
+            background-color: #eee;
+            padding: 6px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .back-link:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Мои объявления</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'cars_home' %}">Каталог</a></li>
+                <li><a href="{% url 'create' %}">Добавить объявление</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Список машин</h2>
+        {% if cars %}
+            <div class="car-list">
+                <ul>
+                    {% for car in cars %}
+                        <li>
+                            <strong>{{ car.name }}</strong> —
+                            {% if car.is_available %}
+                                <span style="color: green;">Доступна</span>
+                            {% else %}
+                                <span style="color: red;">Недоступна</span>
+                            {% endif %}
+                            <br>
+                            {% if car.photo %}
+                                <img src="{{ car.photo.url }}" alt="{{ car.name }}" style="max-width: 200px; height: auto;">
+                            {% else %}
+                                <em>Фото не загружено</em>
+                            {% endif %}
+                            <br>
+                            <small>Добавлена: {{ car.published_date|date:"d.m.Y H:i" }}</small>
+                            <br>
+                            <a href="{% url 'car_edit' car.id %}" class="edit-btn">Изменить</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% else %}
+            <p>У вас пока нет добавленных машин.</p>
+        {% endif %}
+        <a class="back-link" href="{% url 'home' %}">&larr; Вернуться на главную</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Сервис аренды автомобилей. Все права защищены.</p>
+    </footer>
+</body>
+</html>

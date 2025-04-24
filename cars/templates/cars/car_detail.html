@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ car.name }}</title>
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-y: auto; /* Разрешаем вертикальную прокрутку */
+            font-family: Arial, sans-serif;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        img {
+            display: block;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{ car.name }}</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'cars_home' %}">Назад к каталогу</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Информация об автомобиле</h2>
+        <p><strong>Статус:</strong> {% if car.is_available %}Доступна{% else %}Недоступна{% endif %}</p>
+        
+        {% if car.photo %}
+            <img src="{{ car.photo.url }}" alt="{{ car.name }}" style="max-width: 400px;">
+        {% endif %}
+        
+        <p><strong>Дата публикации:</strong> {{ car.published_date|date:"d.m.Y H:i" }}</p>
+        <p><strong>Владелец:</strong> {{ car.owner.username }}</p>
+        <p><strong>Телефон для связи:</strong> {{ car.phone_number }}</p>
+
+        {% if car.description %}
+            <p><strong>Описание:</strong> {{ car.description }}</p>
+        {% endif %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Автосервис</p>
+    </footer>
+</body>
+</html>

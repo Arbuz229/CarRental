@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог</title>
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <style>
+        .car-list {
+            max-height: 500px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .car-list li {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .car-list a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .car-list a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Каталог</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'my_cars' %}">Мои объявления</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Список машин</h2>
+        {% if cars %}
+            <div class="car-list">
+                <ul>
+                    {% for car in cars %}
+                        <li>
+                            <a href="{% url 'car_detail' car.id %}">
+                                <strong>{{ car.name }}</strong> —
+                                {% if car.is_available %}
+                                    Доступна
+                                {% else %}
+                                    Недоступна
+                                {% endif %}
+                                <br>
+                                {% if car.photo %}
+                                    <img src="{{ car.photo.url }}" alt="{{ car.name }}" style="max-width: 200px; height: auto;">
+                                {% else %}
+                                    <em>Фото не загружено</em>
+                                {% endif %}
+                                <br>
+                                <small>Добавлена: {{ car.published_date|date:"d.m.Y H:i" }}</small>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% else %}
+            <p>Нет доступных машин.</p>
+        {% endif %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Сервис аренды автомобилей. Все права защищены.</p>
+    </footer>
+</body>
+</html>
