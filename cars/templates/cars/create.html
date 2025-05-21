@@ -88,27 +88,22 @@
                         <label for="{{ form.name.id_for_label }}">Название автомобиля</label>
                         {{ form.name }}
                     </div>
-
                     <div class="form-group checkbox-group">
                         {{ form.is_available }}
                         <label for="{{ form.is_available.id_for_label }}">Автомобиль доступен</label>
                     </div>
-
                     <div class="form-group">
                         <label for="{{ form.photo.id_for_label }}">Фото автомобиля</label>
                         {{ form.photo }}
                     </div>
-
                     <div class="form-group">
                         <label for="{{ form.phone_number.id_for_label }}">Номер для связи</label>
                         {{ form.phone_number }}
                     </div>
-
                     <div class="form-group">
                         <label for="{{ form.description.id_for_label }}">Дополнительная информация</label>
                         {{ form.description }}
                     </div>
-
                     {% if error %}
                         <p class="error-message">{{ error }}</p>
                     {% endif %}

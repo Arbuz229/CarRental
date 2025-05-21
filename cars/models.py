@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Car(models.Model):
+    objects = None
     name = models.CharField(max_length=100)
     photo = models.ImageField(upload_to='cars_photos/', blank=True, null=True)
     is_available = models.BooleanField(default=True)
@@ -17,3 +18,7 @@ class Car(models.Model):
     class Meta:
         verbose_name = 'Машина'
         verbose_name_plural = 'Машины'
+
+
+
+
