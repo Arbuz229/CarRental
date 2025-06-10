@@ -9,18 +9,71 @@
         html, body {
             margin: 0;
             padding: 0;
-            height: 100%;
-            overflow-y: auto; /* Разрешаем вертикальную прокрутку */
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
         }
 
-        main {
+        header {
+            background-color: #222;
+            color: #fff;
             padding: 20px;
         }
 
-        img {
+        header h1 {
+            margin: 0 0 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .car-image {
+            max-width: 100%;
+            height: auto;
             display: block;
+            border-radius: 8px;
             margin-bottom: 20px;
+        }
+
+
+
+        h2 {
+            margin-top: 0;
+            color: #444;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        strong {
+            color: #000;
         }
     </style>
 </head>
@@ -29,7 +82,7 @@
         <h1>{{ car.name }}</h1>
         <nav>
             <ul>
-                <li><a href="{% url 'cars_home' %}">Назад к каталогу</a></li>
+                <li><a href="{% url 'cars_home' %}">← Назад к каталогу</a></li>
             </ul>
         </nav>
     </header>
@@ -37,9 +90,9 @@
     <main>
         <h2>Информация об автомобиле</h2>
         <p><strong>Статус:</strong> {% if car.is_available %}Доступна{% else %}Недоступна{% endif %}</p>
-        
+
         {% if car.photo %}
-            <img src="{{ car.photo.url }}" alt="{{ car.name }}" style="max-width: 400px;">
+            <img src="{{ car.photo.url }}" alt="{{ car.name }}" class="car-image">
         {% endif %}
         
         <p><strong>Дата публикации:</strong> {{ car.published_date|date:"d.m.Y H:i" }}</p>

@@ -1,10 +1,11 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Профиль</title>
+    <title>{% trans "Профиль" %}</title>
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
     <style>
         .modal {
@@ -46,41 +47,41 @@
 </head>
 <body>
     <header>
-        <h1>Профиль пользователя</h1>
+        <h1>{% trans "Профиль пользователя" %}</h1>
         <nav>
             <ul>
-                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'home' %}">{% trans "Главная" %}</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="profile-section" style="max-width: 600px; margin: 50px auto; padding: 30px; background: #fff; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.1); text-align: center;">
         {% if user.is_authenticated %}
-            <h2>Привет, {{ user.username }}!</h2>
-            <p>Вы вошли в систему.</p>
-            <button class="btn" onclick="showModal()">Выйти</button>
+            <h2>{% blocktrans %}Привет, {{ user.username }}!{% endblocktrans %}</h2>
+            <p>{% trans "Вы вошли в систему." %}</p>
+            <button class="btn" onclick="showModal()">{% trans "Выйти" %}</button>
             <form id="logoutForm" method="post" action="{% url 'logout' %}" style="display: none;">
                 {% csrf_token %}
             </form>
         {% else %}
-            <h2>Вы не вошли в аккаунт</h2>
-            <a href="{% url 'login' %}" class="btn">Войти</a>
-            <a href="{% url 'register' %}" class="btn">Регистрация</a>
+            <h2>{% trans "Вы не вошли в аккаунт" %}</h2>
+            <a href="{% url 'login' %}" class="btn">{% trans "Войти" %}</a>
+            <a href="{% url 'register' %}" class="btn">{% trans "Регистрация" %}</a>
         {% endif %}
     </section>
 
     <div class="modal" id="confirmModal">
         <div class="modal-content">
-            <p>Вы уверены, что хотите выйти?</p>
+            <p>{% trans "Вы уверены, что хотите выйти?" %}</p>
             <div class="modal-buttons">
-                <button class="btn-yes" onclick="submitLogout()">Да</button>
-                <button class="btn-no" onclick="hideModal()">Нет</button>
+                <button class="btn-yes" onclick="submitLogout()">{% trans "Да" %}</button>
+                <button class="btn-no" onclick="hideModal()">{% trans "Нет" %}</button>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2025 Прокат+. Все права защищены.</p>
+        <p>&copy; 2025 {% trans "Прокат+" %}. {% trans "Все права защищены." %}</p>
     </footer>
 
     <script>

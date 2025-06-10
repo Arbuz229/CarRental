@@ -1,58 +1,71 @@
 {% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Аренда товаров</title>
+    <title>{% trans "Аренда товаров" %}</title>
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
 </head>
 <body>
     <header>
-        <h1>Прокат+</h1>
-        <nav>
-            <ul>
-                <li><a href="{% url 'catalog' %}">Предложения сайта партнера</a></li>
-                <li><a href="{% url 'cars_home' %}">Каталог</a></li>
-                <li><a href="{% url 'create' %}">Создать объявление</a></li>
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'profile' %}">Профиль</a></li>
-                {% else %}
-                    <li><a href="{% url 'login' %}">Войти</a></li>
-                {% endif %}
+        <div class="header-container">
+            <h1 class="site-title">{% trans "Прокат+" %}</h1>
 
-                <li><a href="{% url 'contact' %}">Контакты</a></li>
-            </ul>
-        </nav>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'catalog' %}">{% trans "Предложения сайта партнера" %}</a></li>
+                    <li><a href="{% url 'cars_home' %}">{% trans "Каталог" %}</a></li>
+                    <li><a href="{% url 'create' %}">{% trans "Создать объявление" %}</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'profile' %}">{% trans "Профиль" %}</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">{% trans "Войти" %}</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'contact' %}">{% trans "Контакты" %}</a></li>
+                </ul>
+            </nav>
 
+            <form class="language-form" action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path|cut:"/en" }}">
+                <select name="language" onchange="this.form.submit()">
+                    <option value="ru" {% if LANGUAGE_CODE == 'ru' %}selected{% endif %}>Русский</option>
+                    <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
+                </select>
+            </form>
+        </div>
     </header>
 
-    <section id="home">
-        <h2>Добро пожаловать в Прокат+</h2>
-        <p>Арендуйте лучшие товары по доступным ценам.</p>
 
-    </section>
+    <main>
+        <section id="home">
+            <h2>{% trans "Добро пожаловать в Прокат+" %}</h2>
+            <p>{% trans "Арендуйте лучшие товары по доступным ценам." %}</p>
+        </section>
 
-<section id="about">
-        <h2>О нашем магазине</h2>
-        <p>Наш магазин предлагает широкий выбор автомобилей для аренды. Мы стремимся предоставить нашим клиентам удобные и доступные решения для краткосрочной и долгосрочной аренды.</p>
+        <section id="about">
+            <h2>{% trans "О нашем магазине" %}</h2>
+            <p>{% trans "Наш магазин предлагает широкий выбор автомобилей для аренды. Мы стремимся предоставить нашим клиентам удобные и доступные решения для краткосрочной и долгосрочной аренды." %}</p>
 
-        <h3>Наша миссия</h3>
-        <p>Мы хотим сделать аренду доступной, удобной и выгодной для каждого клиента.</p>
+            <h3>{% trans "Наша миссия" %}</h3>
+            <p>{% trans "Мы хотим сделать аренду доступной, удобной и выгодной для каждого клиента." %}</p>
 
-        <h3>Почему выбирают нас?</h3>
-        <ul>
-            <li>Большой выбор товаров</li>
-            <li>Гибкие условия аренды</li>
-            <li>Доступные цены</li>
-            <li>Отличный сервис</li>
-        </ul>
-    </section>
+            <h3>{% trans "Почему выбирают нас?" %}</h3>
+            <ul>
+                <li>{% trans "Большой выбор товаров" %}</li>
+                <li>{% trans "Гибкие условия аренды" %}</li>
+                <li>{% trans "Доступные цены" %}</li>
+                <li>{% trans "Отличный сервис" %}</li>
+            </ul>
+        </section>
+    </main>
+
     <footer>
-        <p>&copy; 2025 Прокат+. Все права защищены.</p>
+        <p>&copy; 2025 {% trans "Прокат+" %}. {% trans "Все права защищены." %}</p>
     </footer>
 </body>
 </html>
-
-

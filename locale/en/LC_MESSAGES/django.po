@@ -1,0 +1,181 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-11 03:07+0500\n"
+"PO-Revision-Date: 2025-06-11 00:00+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: English <en@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\carRent\settings.py:117
+msgid "English"
+msgstr "English"
+
+#: .\carRent\settings.py:118
+msgid "Russian"
+msgstr "Russian"
+
+#: .\main\templates\main\contact.html:10 .\main\templates\main\contact.html:15
+#: .\main\templates\main\index.html:28
+msgid "Контакты"
+msgstr "Contacts"
+
+#: .\main\templates\main\contact.html:18
+#: .\users\templates\users\profile.html:53
+msgid "Главная"
+msgstr "Home"
+
+#: .\main\templates\main\contact.html:24
+msgid "Свяжитесь с нами"
+msgstr "Contact us"
+
+#: .\main\templates\main\contact.html:25
+msgid "Вы можете связаться с нами по следующим контактам:"
+msgstr "You can contact us through the following details:"
+
+#: .\main\templates\main\contact.html:27
+msgid "Телефон"
+msgstr "Phone"
+
+#: .\main\templates\main\contact.html:29
+msgid "Адрес"
+msgstr "Address"
+
+#: .\main\templates\main\contact.html:29
+msgid "ул. Примерная, д. 10, Москва"
+msgstr "10 Example St., Moscow"
+
+#: .\main\templates\main\contact.html:34 .\main\templates\main\index.html:16
+#: .\main\templates\main\index.html:68 .\users\templates\users\profile.html:84
+msgid "Прокат+"
+msgstr "Rent+"
+
+#: .\main\templates\main\contact.html:34 .\main\templates\main\index.html:68
+#: .\users\templates\users\profile.html:84
+msgid "Все права защищены."
+msgstr "All rights reserved."
+
+#: .\main\templates\main\index.html:10
+msgid "Аренда товаров"
+msgstr "Product rental"
+
+#: .\main\templates\main\index.html:20
+msgid "Предложения сайта партнера"
+msgstr "Partner site offers"
+
+#: .\main\templates\main\index.html:21
+msgid "Каталог"
+msgstr "Catalog"
+
+#: .\main\templates\main\index.html:22
+msgid "Создать объявление"
+msgstr "Create listing"
+
+#: .\main\templates\main\index.html:24 .\users\templates\users\profile.html:8
+msgid "Профиль"
+msgstr "Profile"
+
+#: .\main\templates\main\index.html:26 .\users\templates\users\profile.html:68
+msgid "Войти"
+msgstr "Login"
+
+#: .\main\templates\main\index.html:46
+msgid "Добро пожаловать в Прокат+"
+msgstr "Welcome to Rent+"
+
+#: .\main\templates\main\index.html:47
+msgid "Арендуйте лучшие товары по доступным ценам."
+msgstr "Rent the best products at affordable prices."
+
+#: .\main\templates\main\index.html:51
+msgid "О нашем магазине"
+msgstr "About our store"
+
+#: .\main\templates\main\index.html:52
+msgid ""
+"Наш магазин предлагает широкий выбор автомобилей для аренды. Мы стремимся "
+"предоставить нашим клиентам удобные и доступные решения для краткосрочной и "
+"долгосрочной аренды."
+msgstr ""
+"Our store offers a wide selection of cars for rent. We strive to provide our "
+"customers with convenient and affordable solutions for short- and long-term "
+"rentals."
+
+#: .\main\templates\main\index.html:54
+msgid "Наша миссия"
+msgstr "Our mission"
+
+#: .\main\templates\main\index.html:55
+msgid ""
+"Мы хотим сделать аренду доступной, удобной и выгодной для каждого клиента."
+msgstr ""
+"We want to make renting accessible, convenient, and beneficial for every "
+"customer."
+
+#: .\main\templates\main\index.html:57
+msgid "Почему выбирают нас?"
+msgstr "Why choose us?"
+
+#: .\main\templates\main\index.html:59
+msgid "Большой выбор товаров"
+msgstr "Wide product selection"
+
+#: .\main\templates\main\index.html:60
+msgid "Гибкие условия аренды"
+msgstr "Flexible rental terms"
+
+#: .\main\templates\main\index.html:61
+msgid "Доступные цены"
+msgstr "Affordable prices"
+
+#: .\main\templates\main\index.html:62
+msgid "Отличный сервис"
+msgstr "Excellent service"
+
+#: .\users\templates\users\profile.html:50
+msgid "Профиль пользователя"
+msgstr "User Profile"
+
+#: .\users\templates\users\profile.html:60
+#, python-format
+msgid "Привет, %(user.username)s!"
+msgstr "Hello, %(user.username)s!"
+
+#: .\users\templates\users\profile.html:61
+msgid "Вы вошли в систему."
+msgstr "You are logged in."
+
+#: .\users\templates\users\profile.html:62
+msgid "Выйти"
+msgstr "Log out"
+
+#: .\users\templates\users\profile.html:67
+msgid "Вы не вошли в аккаунт"
+msgstr "You are not logged in"
+
+#: .\users\templates\users\profile.html:69
+msgid "Регистрация"
+msgstr "Register"
+
+#: .\users\templates\users\profile.html:75
+msgid "Вы уверены, что хотите выйти?"
+msgstr "Are you sure you want to log out?"
+
+#: .\users\templates\users\profile.html:77
+msgid "Да"
+msgstr "Yes"
+
+#: .\users\templates\users\profile.html:78
+msgid "Нет"
+msgstr "No"
+
